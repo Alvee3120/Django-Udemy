@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse ,HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 
 monthly_challanges_dictionary = {
@@ -17,6 +18,17 @@ monthly_challanges_dictionary = {
         "december": "Decorate for the holidays and spend quality time with family and friends."
 }
 
+def index(request):
+    months = list(monthly_challanges_dictionary.keys())
+    list_items = ''
+
+    for month in months:
+        capitalize_month = month.capitalize()
+        list_items += f"<li> <a href = \"{month}\"> {capitalize_month} </a> </li>"
+
+    respose_data = f"<ul> {list_items} </ul>"
+    return HttpResponse(respose_data)
+
 
 
 def monthly_challanges_by_number(reques,month):
@@ -26,7 +38,8 @@ def monthly_challanges_by_number(reques,month):
         return HttpResponseNotFound("Not Supported month")
 
     redirect_month = months[month-1]
-    return HttpResponseRedirect("/challanges/" + redirect_month)
+    redirect_path = reverse("monthly-challanges", args=[redirect_month])
+    return HttpResponseRedirect(redirect_path)
 
 def monthly_challanges(request,month):
    
