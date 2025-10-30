@@ -18,6 +18,10 @@ monthly_challanges_dictionary = {
         "december": "Decorate for the holidays and spend quality time with family and friends."
 }
 
+
+def myfunction(request):
+    return HttpResponse("Hello World!")
+
 def index(request):
     months = list(monthly_challanges_dictionary.keys())
     list_items = ''
