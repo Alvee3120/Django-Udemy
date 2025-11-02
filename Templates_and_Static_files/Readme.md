@@ -81,3 +81,18 @@ TEMPLATES = [
 ```
 #### Now if we run the server and go to the http://127.0.0.1:8000/index we can see the html file output
 ![alt text](image.png)
+
+
+We can replace the render_to_string into render package
+
+instead of this we can write like this 
+
+```py 
+def index(request):
+
+    # response_data = render_to_string('myapp/myapp.html')
+    # return HttpResponse(response_data)
+
+    return render(request,"myapp/myapp.html")
+
+```

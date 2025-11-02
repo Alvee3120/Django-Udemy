@@ -5,5 +5,8 @@ from django.http import HttpResponse
 
 def index(request):
 
-    response_data = render_to_string('myapp/myapp.html')
-    return HttpResponse(response_data)
+    # response_data = render_to_string('myapp/myapp.html')
+    # return HttpResponse(response_data)
+
+    return render(request,"myapp/myapp.html")
+
