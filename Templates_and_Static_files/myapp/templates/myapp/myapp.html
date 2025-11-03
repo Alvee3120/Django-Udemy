@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My App</title>
-</head>
-<body>
-    <h2> Hello World! </h2>
-    <p> Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-</body>
-</html
+{% extends "base.html" %}
+
+{% block page_title %}{{ month_name }}'s Challenge{% endblock  %}
+
+{% block content %}
+    <h2> {{month_name}}'s Challenge</h2>
+    {% if advice is not None %}
+    <p>{{ advice }}</p>
+
+    {%else%}
+    <p>This Month has no Challenge<p>
+    {%endif%}
+{% endblock %}
